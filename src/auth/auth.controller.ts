@@ -5,7 +5,7 @@ import { AuthService } from "./auth.service";
 import { User } from "../users/users.model";
 
 //Я Саша
-//У меня лучшие одногруппницы!
+//У меня лучшие одногруппницы!!
 @ApiTags("Авторизация")
 @Controller("auth")
 export class AuthController {
