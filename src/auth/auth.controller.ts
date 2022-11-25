@@ -1,31 +1,45 @@
-import { Body, Controller, Post } from "@nestjs/common";
-import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
+
+import { Body, HttpStatus, Next, Post, Redirect,Res, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
+import { Render } from '@nestjs/common';
 import { CreateUserDto } from "../users/dto/create-user.dto";
 import { AuthService } from "./auth.service";
 import { User } from "../users/users.model";
 
 //Я Саша
 //У меня лучшие одногруппницы!!
-@ApiTags("Авторизация")
+
 @Controller("auth")
 export class AuthController {
   constructor(private authService: AuthService) {
   }
-
+ 
   //авторизация
-  @ApiOperation({summary: 'Авторизация'})
-  @ApiResponse({status: 200, type: String})
-  @Post("/login")
+
+  @Post("login")
   login(@Body() userDto: CreateUserDto) {
-    return this.authService.login(userDto);
+    try{
+      var otv = this.authService.login(userDto);
+      return otv 
+    }
+    catch(e){
+      return e.message
+    }
   }
 
   //регистрация
-  @ApiOperation({summary: 'Регистрация'})
-  @ApiResponse({status: 200, type: String})
+  /*@ApiOperation({summary: 'Регистрация'})
+  @ApiResponse({status: 200, type: String})*/
   @Post("/reg")
+  @UsePipes(ValidationPipe)
   registration(@Body() userDto: CreateUserDto) {
-    return this.authService.registration(userDto);
+    try{
+      var otv = this.authService.registration(userDto);
+      return otv 
+    }
+    catch(e){
+      return e.message
+    }
   }
 
 }
