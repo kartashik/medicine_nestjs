@@ -22,7 +22,7 @@ export class Pattern extends Model<Pattern,PatternCreationAttrs> {
   @Column({ type: DataType.BOOLEAN, defaultValue: true })
   visibility: boolean;
 
-  /*@HasMany(()=>Protocol)
-  protocols: Protocol[]*/
+  @HasMany(()=>Protocol)
+  protocols: Protocol[]
 
 }

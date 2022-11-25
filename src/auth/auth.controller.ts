@@ -8,12 +8,10 @@ import { User } from "../users/users.model";
 
 //Я Саша
 //У меня лучшие одногруппницы!!
-
 @Controller("auth")
 export class AuthController {
   constructor(private authService: AuthService) {
   }
- 
   //авторизация
 
   @Post("login")
