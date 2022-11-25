@@ -5,7 +5,6 @@ import { JwtService } from "@nestjs/jwt";
 import * as bcrypt from "bcryptjs"
 import { User } from "../users/users.model";
 
-const ClientError = require("../exceptions/error.exception")
 @Injectable()
 export class AuthService {
   constructor(private userService: UsersService,
@@ -23,7 +22,7 @@ export class AuthService {
   async registration(userDto: CreateUserDto) {
     const candidate = await  this.userService.getUserByEmail(userDto.email);
     if (candidate){
-      throw new ClientError.BAD_REQUEST('Пользователь с таким email существует')
+      throw new Error('Пользователь с таким email существует')
     }
     const hashPassword = await bcrypt.hash(userDto.password, 5);
     const user = await this.userService.createUser({... userDto, password: hashPassword});
@@ -46,6 +45,6 @@ export class AuthService {
     if (user && passwordEquals){
       return user;
     }
-    throw new ClientError.BAD_REQUEST("Неверный пароль или логин")
+    throw new Error("Неверный пароль или логин")
   }
 }
