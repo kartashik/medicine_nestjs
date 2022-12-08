@@ -37,6 +37,12 @@ export class AuthService {
       token: this.jwtService.sign(payload)
     }
   }
+  async check(user : User){
+    const payload = {email: user.email,id: user.id,}
+    return{
+      token: this.jwtService.sign(payload)
+    }
+  }
 
   //проверка, что такой пользователь есть, если да, проверка совпадения паролей
   private async validateUser(userDto: CreateUserDto){
