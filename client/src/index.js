@@ -1,6 +1,7 @@
 import React, {createContext} from 'react';
 import App from './App';
 import UserStore from './store/UserStore';
+import PatientStore from './store/PatientStore';
 import { createRoot } from "react-dom/client";
 
 export const Context = createContext(null)
@@ -13,6 +14,7 @@ const root = createRoot(rootElement);
 root.render(
   <Context.Provider value={{
     user: new UserStore(),
+    patient: new PatientStore()
   }}>
   <App />,
   </Context.Provider>,
