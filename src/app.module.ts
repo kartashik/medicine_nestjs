@@ -1,4 +1,4 @@
-import { Module } from "@nestjs/common";
+import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
 import { SequelizeModule } from "@nestjs/sequelize";
 import { UsersModule } from './users/users.module';
 import { ConfigModule } from "@nestjs/config";
@@ -36,4 +36,4 @@ import { Pattern } from "./patterns/patterns.model";
     PatternsModule
   ]
 })
-export class AppModule{}
+export class AppModule {}

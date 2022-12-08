@@ -4,21 +4,18 @@ import UserStore from './store/UserStore';
 import PatientStore from './store/PatientStore';
 import { createRoot } from "react-dom/client";
 
-export const Context = createContext(null)
-console.log(process.env.REACT_APP_API_URL)
 
-const rootElement = document.getElementById("root");
-const root = createRoot(rootElement);
+export const Context = React.createContext();
 
 
-root.render(
+createRoot(document.getElementById('root')).render(
   <Context.Provider value={{
     user: new UserStore(),
     patient: new PatientStore()
   }}>
-  <App />,
+      <App />
   </Context.Provider>,
-)
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
