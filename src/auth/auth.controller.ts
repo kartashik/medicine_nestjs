@@ -1,10 +1,11 @@
 
-import { Body, HttpStatus, Next,Bind, Post, Redirect,Response, UsePipes, ValidationPipe, Request, UseGuards } from '@nestjs/common';
+import { Body, HttpStatus, Next,Bind, Post, Redirect,Response, UsePipes, ValidationPipe, Request, UseGuards, Req, Res, Param, Query } from '@nestjs/common';
 import { Controller, Get } from '@nestjs/common';
 import { Render } from '@nestjs/common';
 import { CreateUserDto } from "../users/dto/create-user.dto";
 import { AuthService } from "./auth.service";
 import { User } from "../users/users.model";
+import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 
 
@@ -14,30 +15,15 @@ import { User } from "../users/users.model";
 export class AuthController {
   constructor(private authService: AuthService) {
   }
-  //авторизация
-  @Post("login")
-  login(@Body() userDto: CreateUserDto) {
-    
-      var otv = this.authService.login(userDto);
+
+
+  
+  @Post("check")
+  check(@Query('pass') pass: string) {
+      var otv = this.authService.check(pass);
       return otv
     
   }
 
-  //регистрация
-  /*@ApiOperation({summary: 'Регистрация'})
-  @ApiResponse({status: 200, type: String})*/
-  @Post("reg")
-  @UsePipes(ValidationPipe)
-  registration(@Body() userDto: CreateUserDto) {
-      var otv = this.authService.registration(userDto);
-      return otv
-  }
-  @Get("check")
-  check(@Body() user: User) {
-    const token = this.authService.check(user)
-    return token
-    
-  }
-  
 }
 
