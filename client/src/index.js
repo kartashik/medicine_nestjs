@@ -1,21 +1,25 @@
-import React, {createContext} from 'react';
+import React, {createContext, useState} from 'react';
 import App from './App';
-import UserStore from './store/UserStore';
-import PatientStore from './store/PatientStore';
 import { createRoot } from "react-dom/client";
 
 
 export const Context = React.createContext();
 
 
+
+export default function Main(){
+const [user, setUser] = useState(false);
+return(  
+<Context.Provider value={[user, setUser]}>
+  <App />
+</Context.Provider>)
+
+}
 createRoot(document.getElementById('root')).render(
-  <Context.Provider value={{
-    user: new UserStore(),
-    patient: new PatientStore()
-  }}>
-      <App />
-  </Context.Provider>,
+  <Main />
+
 );
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

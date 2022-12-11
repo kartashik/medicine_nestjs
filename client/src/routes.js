@@ -1,20 +1,12 @@
-import {LOGIN_ROUTE,  REGISTRATION_ROUTE, PATIENTS_ROUTE} from './utils/consts';
-import Auth from "./pages/Auth";
-import Patients from './pages/Patients';
+import {LOGIN_ROUTE} from './utils/consts';
+import Check from './pages/Check';
 
 export const authRoutes = []
 
 export const publicRoutes = [
     {
         path: LOGIN_ROUTE,
-        Component: Auth
+        Component: Check
     },
-    {
-        path: REGISTRATION_ROUTE,
-        Component: Auth
-    },
-    {
-        path: PATIENTS_ROUTE,
-        Component: Patients
-    }
+
 ]
