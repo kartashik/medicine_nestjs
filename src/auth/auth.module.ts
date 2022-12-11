@@ -4,7 +4,6 @@ import { AuthController } from "./auth.controller";
 import { UsersService } from "../users/users.service";
 import { UsersModule } from "../users/users.module";
 import { JwtModule } from "@nestjs/jwt";
-import { AuthMiddleware } from "src/middleware/authMiddleware";
 
 @Module({
   providers: [AuthService],
@@ -25,13 +24,4 @@ import { AuthMiddleware } from "src/middleware/authMiddleware";
   ]
 })
 export class AuthModule{
-  public configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(AuthMiddleware)
-      .forRoutes(
-        { path: '/main', method: RequestMethod.POST },
-        
-      );
-  
-}
 }
