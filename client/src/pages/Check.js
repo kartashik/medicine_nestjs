@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {Container, Form, Card, Button, Row} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
-//import {} from "../utils/consts";      Сюда маршрут куда будет переходить 
+import {PATIENTS_ROUTE} from "../utils/consts";      //Сюда маршрут куда будет переходить 
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import {check } from '../http/userAPI';
@@ -23,7 +23,7 @@ const Check = observer(() => {
             setUser(data)
             setValidError('')
             
-            //navigate()                     Сюда внутрь скобок маршрут по которому будет переходить
+            navigate(PATIENTS_ROUTE)                     //Сюда внутрь скобок маршрут по которому будет переходить
         } catch (e) {
             setValidError('Неверный код доступа')
         }
