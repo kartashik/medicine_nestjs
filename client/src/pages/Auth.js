@@ -5,6 +5,7 @@ import {LOGIN_ROUTE, REGISTRATION_ROUTE} from "../utils/consts";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import { login, registration } from '../http/userAPI';
+import {PATIENTS_ROUTE} from '../utils/consts';
 
 
 
@@ -34,7 +35,7 @@ const Auth = observer(() => {
     const emailHandler = (e) => {
         setEmail(e.target.value)
         setValidError('')
-        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        const re = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
         if (re.test(String(email).toLowerCase())===false || String(email)===false){
             setEmailError('Некорректный Email' )
             if(!e.target.value){
@@ -90,7 +91,7 @@ const Auth = observer(() => {
             }
             user.setUser(data)
             user.setIsAuth(true)
-            navigate(MAIN_ROUTE)
+            navigate(PATIENTS_ROUTE)
         } catch (e) {
             if(isLogin){
                 e.message = 'Неверный логин и/или пароль'

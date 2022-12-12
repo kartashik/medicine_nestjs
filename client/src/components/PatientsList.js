@@ -1,38 +1,48 @@
-import { observer } from 'mobx-react-lite';
-import React, { useContext } from 'react';
-import { Context } from '../index';
-import PatientItem from './PatientItem';
+import React from 'react';
 
-const PatientsList = observer (() => {
-    const {patient} = useContext(Context)
-  return (
-    <tbody>
-      {patient.patients.map(patient => 
-            <PatientItem key={patient.id} patient={patient}/>
-        )}
-         <tr>
-        <td>1</td>
-        <td>Кукушкина</td>
-        <td>Евдокия</td>
-        <td>Ивановна</td>
-        <td>01.01.1975</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Чижиков</td>
-        <td>Иван</td>
-        <td>Петрович</td>
-        <td>11.05.1999</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Львова</td>
-        <td>Алина</td>
-        <td>Дмитриевна</td>
-        <td>11.11.2000</td>
-      </tr>
-    </tbody>
-  );
-});
+export default props => (
+    <table className="table">
+      <thead>
+        <tr>
+        <th onClick={props.onSort.bind(null, 'id')}>
+            ID {props.sortField === 'id' ? <small>{props.sort}</small> : null}
+          </th>
+          <th onClick={props.onSort.bind(null, 'secondName')}>
+              Фамилия {props.sortField === 'secondName' ? <small>{props.sort}</small> : null}
+          </th>
+          <th onClick={props.onSort.bind(null, 'firstName')}>
+              Имя {props.sortField === 'firstName' ? <small>{props.sort}</small> : null}
+          </th>
+          <th onClick={props.onSort.bind(null, 'middleName')}>
+              Отчество {props.sortField === 'middleName' ? <small>{props.sort}</small> : null}
+          </th> 
+          <th onClick={props.onSort.bind(null, 'dateOfBirth')}>
+            Дата рождения {props.sortField === 'dateOfBirth' ? <small>{props.sort}</small> : null}
+          </th>
+          </tr>
+        </thead>
+        <tbody>
+            { props.data.map(item =>(
+                <tr>
+                    <td>{item.id}</td>
+                    <td>{item.secondName}</td>
+                    <td>{item.firstName}</td>
+                    <td>{item.middleName}</td>
+                    <td>{item.dateOfBirth}</td>
+                </tr>
+            ))}
+        </tbody>
+    </table>
+)
+/*
+<th onClick={props.onSort.bind(null, 'id')}>
+            ID {props.sortField === 'id' ? <img alt={"sort"} src={props.sort}/>  : null}
+          </th>
 
-export default PatientsList
+import {$host} from "./index";
+
+export const fetchPatients = async () => {
+    const {data} = await $host.get('patients/getAll?userId=1')
+    return data 
+}
+*/
