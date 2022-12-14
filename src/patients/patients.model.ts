@@ -55,14 +55,7 @@ export class Patient extends Model<Patient,PatientCreationAttrs> {
   @Column({ type: DataType.BOOLEAN, defaultValue: true })
   visibility: boolean;
 
-  @ForeignKey(()=> User)
-  @Column({ type: DataType.INTEGER})
-  userId: number;
-
-  @BelongsTo(()=>User)
-  doctor: User;
-
-  /*@HasMany(()=>Protocol)
-  protocols: Protocol[]*/
+  @HasMany(()=>Protocol)
+  protocols: Protocol[]
 
 }

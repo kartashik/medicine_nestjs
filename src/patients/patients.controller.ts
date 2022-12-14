@@ -32,10 +32,9 @@ export class PatientsController {
 
   @ApiOperation({summary: 'Получение всех пациентов'})
   @ApiResponse({status: 200, type: Patient})
-  @ApiQuery({name: "userId", type: Number, required:true, description: "id пользователя"})
   @Get('getAll')
-  getAllPatient(@Query() query: {userId:number}){
-    return this.patientsService.getAllPatient(query.userId)
+  getAllPatient(){
+    return this.patientsService.getAllPatient()
   }
   @ApiOperation({summary: 'Изменение пациента'})
   @ApiResponse({status: 200, type: Patient})

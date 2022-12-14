@@ -9,8 +9,6 @@ import { SequelizeModule } from "@nestjs/sequelize";
   controllers: [UsersController],
   providers: [UsersService],
   imports: [
-    SequelizeModule.forFeature([User]),
-    forwardRef(() => AuthModule),
   ],
   exports: [
     UsersService,

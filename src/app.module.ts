@@ -26,10 +26,9 @@ import { Pattern } from "./patterns/patterns.model";
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [User, Patient, Protocol, Pattern],
+      models: [Patient, Protocol, Pattern],
       autoLoadModels: true
     }),
-    UsersModule,
     AuthModule,
     PatientsModule,
     ProtocolsModule,

@@ -27,6 +27,10 @@ export class ProtocolsController {
     findOne(@Query() protocol: {id:number}) {
         return this.protocolsService.findOne(protocol.id)
     }
+    @Get('getAll')
+    findAll(@Query() protocol: {id:number}) {
+        return this.protocolsService.findAll(protocol.id)
+    }
     
 
     //@ApiOperation({summary: 'Изменение пациента'})

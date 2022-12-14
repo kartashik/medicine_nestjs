@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavLink } from "react-bootstrap";
+import { VIEW_PATIENT_ROUTE } from "../utils/consts";
 
 export default props => (
     <table className="table">
@@ -24,11 +26,11 @@ export default props => (
         <tbody>
             { props.data.map(item =>(
                 <tr>
-                    <td>{item.id}</td>
+                    <td><NavLink style={{color:'black'}} href={VIEW_PATIENT_ROUTE + '/' + item.id}>{item.id}</NavLink></td>
                     <td>{item.secondName}</td>
                     <td>{item.firstName}</td>
                     <td>{item.middleName}</td>
-                    <td>{item.dateOfBirth}</td>
+                    <td>{item.dateOfBirth.slice(0,10)}</td>
                 </tr>
             ))}
         </tbody>

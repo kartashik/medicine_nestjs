@@ -15,7 +15,7 @@ class Patients extends Component {
     }
     
     async componentDidMount() {
-        const {data} = await $host.get('patients/getAll?userId=1')
+        const {data} = await $host.get('patients/getAll')
         this.setState({
             data: _.orderBy(data, this.state.sortField, this.state.sort)
         })

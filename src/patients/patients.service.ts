@@ -23,10 +23,9 @@ export class PatientsService {
       });
     }
   
-    async getAllPatient(userId: number) {
+    async getAllPatient() {
       return await this.patientRepository.findAll({
         where: {
-          userId: userId,
           visibility:true
         }
       });
@@ -54,9 +53,6 @@ export class PatientsService {
       }
       if (typeof dto.phone !== 'undefined') {
   updateData.phone = dto.phone;
-      }
-      if (typeof dto.userId !== 'undefined') {
-  updateData.userId = dto.userId;
       }
       return await this.patientRepository.update(updateData, {where:{id: id, visibility: true}});
     }

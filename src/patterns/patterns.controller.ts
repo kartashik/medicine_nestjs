@@ -12,7 +12,7 @@ export class PatternsController {
     constructor(private  patternsService: PatternsService) {}
 
     //@ApiOperation({summary: 'Создание шаблона'})
-    @UsePipes(ValidationPipe)
+    //@UsePipes(ValidationPipe)
     @Post('create')
     create(@Body() patternDto: CreatePatternDto ){
         return this.patternsService.createPattern(patternDto)
@@ -24,6 +24,10 @@ export class PatternsController {
     @Get('get')
     getPattern(@Query() pattern: {id:number}){
         return this.patternsService.findOne(pattern.id)
+    }
+    @Get('getAll')
+    getAllPattern(){
+        return this.patternsService.findAll()
     }
 
     @Put('update')

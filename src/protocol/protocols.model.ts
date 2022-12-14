@@ -7,7 +7,7 @@ import { Pattern } from "src/patterns/patterns.model";
 //Поля необходимые для создания протокола
 interface ProtocolCreationAttrs{
   anamnes: string;
-  result: string;
+  result: string[];
   patternId: number;
 }
 
@@ -25,8 +25,8 @@ export class Protocol extends Model<Protocol,ProtocolCreationAttrs> {
   @Column({ type: DataType.STRING})
   anamnes: string;
 
-  @Column({ type: DataType.STRING, allowNull:false })
-  result: string;
+  @Column({ type: DataType.ARRAY(DataType.STRING), allowNull:false })
+  result: string[];
 
   @Column({ type: DataType.BOOLEAN, defaultValue: true })
   visibility: boolean;

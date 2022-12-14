@@ -5,7 +5,8 @@ import { Protocol } from "../protocol/protocols.model";
 //Модель данных "Шаблон"
 //Поля необходимые для создания шаблона
 interface PatternCreationAttrs{
-  content: string;
+  name: string,
+  content: string[];
 }
 
 //Таблица в бд и ее колонки
@@ -17,7 +18,10 @@ export class Pattern extends Model<Pattern,PatternCreationAttrs> {
   id: number;
 
   @Column({ type: DataType.STRING, allowNull: false})
-  content: string;
+  name: string;
+
+  @Column({ type: DataType.ARRAY(DataType.STRING), allowNull: false})
+  content: string[];
 
   @Column({ type: DataType.BOOLEAN, defaultValue: true })
   visibility: boolean;

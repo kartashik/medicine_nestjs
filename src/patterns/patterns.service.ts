@@ -12,13 +12,18 @@ export class PatternsService {
     async createPattern(dto: CreatePatternDto) {
         return await this.patternRepository.create(dto);
     }
-    async getPattern(id: number) {
-        return await this.patternRepository.findByPk(id);
-    }
+
     async findOne(id: number) {
         return await this.patternRepository.findAll({
             where: {
                 id: id,
+                visibility:true
+            }
+        });
+    }
+    async findAll(){
+        return await this.patternRepository.findAll({
+            where: {
                 visibility:true
             }
         });

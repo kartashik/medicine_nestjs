@@ -23,7 +23,4 @@ export class UpdatePatientDto{
   @ApiProperty({example: "89096387223", description: 'Телефон пользователя'})
   @IsString({message: "Должно быть строкой"})
    phone: string;
-  @ApiProperty({example: "1234 567890", description: 'Уникальный идентификатор пользователя'})
-  @IsString({message: "Должно быть числом"})
-   userId: number;
 }

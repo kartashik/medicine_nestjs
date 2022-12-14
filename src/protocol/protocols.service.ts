@@ -22,6 +22,14 @@ export class ProtocolsService {
             }
         });
     }
+  async findAll(id: number) {
+    return await this.protocolRepository.findAll({
+      where: {
+        patientId: id,
+        visibility:true
+      }
+    });
+  }
 
       async updateProtocol(dto: UpdateProtocolDto, id: number ) {
         const updateData: any = {};

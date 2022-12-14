@@ -1,11 +1,7 @@
 
-import { Body, HttpStatus, Next,Bind, Post, Redirect,Response, UsePipes, ValidationPipe, Request, UseGuards, Req, Res, Param, Query } from '@nestjs/common';
-import { Controller, Get } from '@nestjs/common';
-import { Render } from '@nestjs/common';
-import { CreateUserDto } from "../users/dto/create-user.dto";
+import { Post, Query } from '@nestjs/common';
+import { Controller } from '@nestjs/common';
 import { AuthService } from "./auth.service";
-import { User } from "../users/users.model";
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 
 
