@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { Button, Card, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import { Context } from "../index";
 import { createPatient, deletePatient, fetchOnePatient, updatePatient } from "../http/patientAPI";
-import IMask from 'imask';
 import { observer } from "mobx-react-lite";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { CREATE_PATIENT_ROUTE, CREATE_PROTOCOL_ROUTE, PATIENTS_ROUTE, VIEW_PATIENT_ROUTE } from "../utils/consts";
