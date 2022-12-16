@@ -161,3 +161,4 @@ export const publicRoutes = [
 
 
 На этом всё
+Запуск npm run dev
